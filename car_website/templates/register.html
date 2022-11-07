@@ -1,0 +1,18 @@
+
+<head>
+    <title>New Signup Form</title>
+</head>
+<body><center>
+    <h1>New User Sign-up</h1>
+    <hr/>
+    <form method="POST">
+        {% csrf_token %}
+        <table border="1">
+            {{form}}
+        </table>
+        <input type="submit" vaule="Sign-up">
+        <h3 style="color: red">{{error}}</h3>
+        <h3 style="color: green">{{info}}</h3>
+    </form>
+</center>
+</body>

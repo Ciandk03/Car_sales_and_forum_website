@@ -1,0 +1,19 @@
+<nav>
+  {% url 'public:index' as index_url %}
+  <span>{% if request.path == index_url %}Home{% else %}<a href="{% url 'public:index' %}">Home</a>{% endif %}</span>
+  {% url 'accounts:forums' as forums_url %}
+  <span>{% if request.path == forums_url %}Forums{% else %}<a href="{% url 'accounts:forums' %}">Forums</a>{% endif %}</span>
+  {% url 'public:used' as used_url %}
+  <span>{% if request.path == used_url %}Used Cars{% else %}<a href="{% url 'public:used' %}">Used Cars</a>{% endif %}</span>
+  {% url 'public:contact' as contact_url %}
+  <span>{% if request.path == contact_url %}Contact{% else %}<a href="{% url 'public:contact' %}">Contact</a>{% endif %}</span>
+  <span style="float:right">
+    {% if user.is_authenticated %}
+        {% url 'accounts:profile' as profile_url %}
+        <span>Hi {% if request.path == profile_url %}{{user.username}}{% else %}<a href="{{ profile_url }}">{{user.username}}</a>{% endif %}!</span>
+        <span><a href="{% url 'accounts:logout' %}">Logout</a></span>
+    {% else %}
+        <span><a href="{% url 'accounts:login' %}">Login</a></span>
+    {% endif %}
+  </span>
+</nav>
